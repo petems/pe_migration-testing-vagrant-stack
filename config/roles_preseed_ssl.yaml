@@ -1,0 +1,6 @@
+---
+roles:
+  preseed_ssl_dir:
+    provisioners:
+      - type: shell
+        inline: "sudo /vagrant/files/migration_restore_pre_install.sh"
