@@ -17,7 +17,7 @@ sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc $BACKUP_DIR/pe-rba
 #Start PE services
 #Install database extensions and repair database permissions
 #Repair PE classification groups to reflect the 2016.2 Puppet master’s certificate name.
-puppet enterprise configure --modulepath /opt/puppetlabs/server/data/enterprise/modules
+puppet enterprise configure
 
 #Optional: For cleaniness revoke cert from old master if certname is different
 #OLD_MASTER_CERTNAME=<old_master_certname_here>

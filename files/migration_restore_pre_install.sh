@@ -13,6 +13,3 @@ rm -f /etc/puppetlabs/puppet/ssl/public_keys/pe-internal-classifier.pem
 rm -f /etc/puppetlabs/puppet/ssl/public_keys/pe-internal-dashboard.pem
 rm -f /etc/puppetlabs/puppet/ssl/ca/signed/pe-internal-classifier.pem
 rm -f /etc/puppetlabs/puppet/ssl/ca/signed/pe-internal-dashboard.pem
-
-#THIS IS A TEMPORARY HACK
-rm -f /etc/puppetlabs/puppet/ssl/certs/ca.pem
