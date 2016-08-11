@@ -4,7 +4,8 @@
 vagrant up master385-centos agent385-centos
 vagrant ssh master385-centos -c 'sudo /vagrant/files/migration_backup.sh'
 vagrant up master201620-centos
-vagrant ssh master201620-centos -c 'sudo /vagrant/files/migration_restore_post_install.sh'
+vagrant ssh master201620-centos -c 'sudo /vagrant/files/migration\_restore\_pre\_install.sh'
+vagrant ssh master201620-centos -c 'sudo /vagrant/files/migration\_restore\_post\_install.sh'
 vagrant provision agent385-centos --provision-with hosts
 vagrant ssh agent385-centos -c 'puppet agent -t --server master201620-centos'
 vagrant ssh master201620-centos
