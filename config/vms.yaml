@@ -8,6 +8,6 @@ vms:
     box:  "puppetlabs/centos-6.6-64-nocm"
     roles: [ "agent_385", "centos", "hosts" , "auto_net" ]
 
-  - name: "master201620-centos"
+  - name: "master201621-centos"
     box:  "puppetlabs/centos-6.6-64-nocm"
-    roles: [ "4-cpus", "4gb-memory", "master201620", "preseed_ssl_dir", "customize_pe_via_hiera_2015", "centos", "hosts" , "auto_net" ]
+    roles: [ "4-cpus", "4gb-memory", "master201621", "preseed_ssl_dir", "customize_pe_via_hiera_2015", "centos", "hosts" , "auto_net", "pe-forward-console"]

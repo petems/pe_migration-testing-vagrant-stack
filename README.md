@@ -3,11 +3,12 @@
 ~~~
 vagrant up master385-centos agent385-centos
 vagrant ssh master385-centos -c 'sudo /vagrant/files/migration_backup.sh'
-vagrant up master201620-centos
-vagrant ssh master201620-centos -c 'sudo /vagrant/files/migration_restore_post_install.sh'
+vagrant up master201621-centos
+vagrant ssh master201621-centos -c 'sudo /vagrant/files/migration_restore_pre_install.sh'
+vagrant ssh master201621-centos -c 'sudo /vagrant/files/migration_restore_post_install.sh'
 vagrant provision agent385-centos --provision-with hosts
-vagrant ssh agent385-centos -c 'puppet agent -t --server master201620-centos'
-vagrant ssh master201620-centos
+vagrant ssh agent385-centos -c 'puppet agent -t --server master201621-centos'
+vagrant ssh master201621-centos
 ~~~
 
 Before you can bring up the 201620 master you have to have a backup produced from the 385 master.
@@ -16,12 +17,12 @@ Before you can bring up the 201620 master you have to have a backup produced fro
 
 You're going to spin up a 385 master and agent.  This means you have a CA and a signed agent cert.
 When you restore the ssl dir on the 2016.2 master you should expect that the agent can run against
-the new master because you restored the existing CA and signed certs.  
+the new master because you restored the existing CA and signed certs.
 
 In addition you should see that the old master still exists in the console.  You can optionally
-deactivate and clean that node/cert.  
+deactivate and clean that node/cert.
 
-You should confirm the PE groups in the console correctly reference the new master name.  
+You should confirm the PE groups in the console correctly reference the new master name.
 
 You should confirm that a `puppet agent -t` on the new master and the 385 agent works
 
