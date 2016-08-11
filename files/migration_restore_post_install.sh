@@ -9,10 +9,14 @@ puppet resource service pe-activemq ensure=stopped
 puppet resource service pe-orchestration-services ensure=stopped
 puppet resource service pxp-agent ensure=stopped
 
-sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc $BACKUP_DIR/pe-puppetdb.backup.bin -d template1
-sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc $BACKUP_DIR/pe-classifier.backup.bin -d template1
-sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc $BACKUP_DIR/pe-activity.backup.bin -d template1
-sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc $BACKUP_DIR/pe-rbac.backup.bin -d template1
+mkdir -p /tmp/pe_postgres_restore
+
+cp $BACKUP_DIR/*.backup.bin /tmp/pe_postgres_restore
+
+sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc /tmp/pe_postgres_restore/pe-puppetdb.backup.bin -d template1
+sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc /tmp/pe_postgres_restore/pe-classifier.backup.bin -d template1
+sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc /tmp/pe_postgres_restore/pe-activity.backup.bin -d template1
+sudo -u pe-postgres /opt/puppetlabs/server/bin/pg_restore -Cc /tmp/pe_postgres_restore/pe-rbac.backup.bin -d template1
 
 #Start PE services
 #Install database extensions and repair database permissions
